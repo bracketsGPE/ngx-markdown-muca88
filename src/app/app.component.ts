@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
     <span *ngIf="showMarkdown">Edit</span>
   </button>
   <button class="btn-primary" (click)="saveMarkdown()">SAVE</button>
+  <button class="btn-danger" (click)="clear()">CLEAR</button>
 
   <div *ngIf="!showMarkdown" class="textWrapper">
     <textarea [(ngModel)]="markdown"></textarea>
@@ -29,6 +30,9 @@ export class AppComponent implements OnInit {
 
   saveMarkdown() {
     localStorage.setItem('markdown', this.markdown);
+  }
+  clear() {
+    this.markdown = '';
   }
   toggleMarkdown() {
     if (this.showMarkdown) {
