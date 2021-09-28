@@ -3,10 +3,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-  <button class="btn-success" (click)="toggleMarkdown()">Compile</button>
+  <button class="btn-success" (click)="toggleMarkdown()">
+    <span *ngIf="!showMarkdown">Compile</span>
+    <span *ngIf="showMarkdown">Edit</span>
+  </button>
   <button class="btn-primary" (click)="saveMarkdown()">SAVE</button>
 
-  <div class="textWrapper" *ngIf="!showMarkdown">
+  <div *ngIf="!showMarkdown" class="textWrapper">
     <textarea [(ngModel)]="markdown"></textarea>
   </div>
 
