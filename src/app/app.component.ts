@@ -3,15 +3,19 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-  <textarea class="variable-textarea" [(ngModel)]="markdown"></textarea>
+  <button class="btn-primary" (click)="toggleMarkdown()">Compile</button>
 
-  <markdown class="variable-binding" [data]="markdown"></markdown>
+  <div *ngIf="!showMarkdown">
+    <textarea class="variable-textarea" [(ngModel)]="markdown"></textarea>
+    <button class="btn-primary" (click)="saveMarkdown()">SAVE</button>
+  </div>
 
-  <button class="btn-primary" (click)="saveMarkdown()">SAVE</button>
+  <markdown *ngIf="showMarkdown" class="variable-binding" [data]="markdown"></markdown>
   `,
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  showMarkdown = false;
   markdown = ``;
 
   ngOnInit() {
@@ -20,5 +24,12 @@ export class AppComponent implements OnInit {
 
   saveMarkdown() {
     localStorage.setItem('markdown', this.markdown);
+  }
+  toggleMarkdown() {
+    if (this.showMarkdown) {
+      this.showMarkdown = false;
+    } else {
+      this.showMarkdown = true;
+    }
   }
 }
