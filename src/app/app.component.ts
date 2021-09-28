@@ -3,14 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-  <button class="btn-primary" (click)="toggleMarkdown()">Compile</button>
+  <button class="btn-success" (click)="toggleMarkdown()">Compile</button>
+  <button class="btn-primary" (click)="saveMarkdown()">SAVE</button>
 
-  <div *ngIf="!showMarkdown">
-    <textarea class="variable-textarea" [(ngModel)]="markdown"></textarea>
-    <button class="btn-primary" (click)="saveMarkdown()">SAVE</button>
+  <div class="textWrapper" *ngIf="!showMarkdown">
+    <textarea [(ngModel)]="markdown"></textarea>
   </div>
 
-  <markdown *ngIf="showMarkdown" class="variable-binding" [data]="markdown"></markdown>
+  <div class="markdownWrapper">
+    <markdown [data]="markdown"></markdown>
+  </div>
   `,
   styleUrls: ['./app.component.css'],
 })
