@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   markdown = ``;
 
   ngOnInit() {
-    localStorage.getItem('markdown');
+    this.markdown = localStorage.getItem('markdown');
   }
 
   saveMarkdown() {
