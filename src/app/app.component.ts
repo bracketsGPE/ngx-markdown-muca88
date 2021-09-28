@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
     <textarea [(ngModel)]="markdown"></textarea>
   </div>
 
-  <div class="markdownWrapper">
+  <div *ngIf="showMarkdown" class="markdownWrapper">
     <markdown [data]="markdown"></markdown>
   </div>
   `,
